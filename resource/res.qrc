@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/dateNavButtonLeft.png</file>
+        <file>icons/dateNavButtonRight.png</file>
+        <file>icons/dateNavButtonLeft@0,5x.png</file>
+        <file>icons/dateNavButtonLeft@0,25x.png</file>
+        <file>icons/dateNavButtonLeft@0,75x.png</file>
+        <file>icons/dateNavButtonRight@0,5x.png</file>
+        <file>icons/dateNavButtonRight@0,25x.png</file>
+        <file>icons/dateNavButtonRight@0,75x.png</file>
+    </qresource>
+</RCC>
