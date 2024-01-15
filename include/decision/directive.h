@@ -3,6 +3,7 @@
 
 #include <QDate>
 #include <QDebug>
+#include <QObject>
 #include <QString>
 
 #include "../serialization/serializable.h"
@@ -36,9 +37,9 @@
  * =============================================================================
  */
 
-class Directive : public Serializable
+class Directive : public QObject, public Serializable
 {
-    Q_GADGET
+    Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QString description READ description WRITE setDescription)
     Q_PROPERTY(Valence valence READ valence WRITE setValence)
@@ -56,20 +57,8 @@ public:
     // -------------------------------------------------------------------------
     // [Directive]   L I F E - C Y C L E
     // -------------------------------------------------------------------------
-    // Defaulted constructor, copy constructor, and destructor
-    Directive() = default;
-    Directive(const Directive& directive) = default;
-    virtual ~Directive() = default;
+    // explicit Directive()
 
-protected:
-    // Constructor for subclasses
-    Directive(const QString& name,
-              const QString& description,
-              const Valence& valence);
-public:
-
-    // Copy assignment operator
-    Directive& operator=(const Directive& directive) = default;
 
     // -------------------------------------------------------------------------
     // [Directive]   M E M B E R S
@@ -112,9 +101,9 @@ public:
     void fromVariant(const QVariant& variant) override;
 
 protected:
-    // --------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     // [Directive]   D A T A   M E M B E R S
-    // --------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
     QString m_name = "Default Directive Name";
     QString m_description = "Default directive description...";
     Valence m_valence = Valence::NEGATIVE;
